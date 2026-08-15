@@ -2,10 +2,7 @@ module up_down_n #(parameter width = 8) (input rst, input clk, input en_load, in
     always@(posedge clk) begin
         // Synchronus load and reset, thus not included in the sensitivty list.
         if(~rst) begin // Active low.
-            if(up_ndown) // If up, set initial count to 0.
-                cnt <= 0;
-            else // If down, set count to max.
-                cnt <= {width{1'b1}};
+            cnt <= 0;
         end
         else if (en_load) begin
             cnt <= load;
